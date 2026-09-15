@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>District - Movies</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fbff;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            width: 100%;
+            height: 80px;
+
+            background: white;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 35px;
+
+            gap: 25px;
+
+            border-bottom: 1px solid #eeeeee;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            width: 120px;
+
+            font-size: 28px;
+            font-weight: bold;
+
+            color: #222;
+
+            line-height: 20px;
+        }
+
+        .logo span {
+            display: block;
+
+            font-size: 7px;
+
+            letter-spacing: 2px;
+
+            margin-top: 5px;
+
+            color: #555;
+        }
+
+
+        /* LOCATION */
+
+        .location {
+            width: 100px;
+
+            display: flex;
+            flex-direction: column;
+
+            font-size: 14px;
+
+            color: #333;
+        }
+
+        .location small {
+            color: #888;
+
+            font-size: 10px;
+
+            margin-left: 19px;
+
+            margin-top: 3px;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            flex: 1;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: #444;
+
+            font-size: 14px;
+
+            padding: 11px 14px;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #f2f2f2;
+        }
+
+        nav a.active {
+            background: #f1f1f1;
+
+            font-weight: bold;
+        }
+
+
+        /* BOOKING BUTTON */
+
+        .booking {
+            background: #8bc48b;
+
+            color: white;
+
+            border: none;
+
+            padding: 15px 20px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+        }
+
+        .booking:hover {
+            background: #70ad70;
+        }
+
+
+        /* =========================
+           MOVIE SECTION
+        ========================= */
+
+        .movie-container {
+
+            width: 900px;
+
+            max-width: 90%;
+
+            margin: 35px auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 35px 25px;
+        }
+
+
+        /* =========================
+           MOVIE CARD
+        ========================= */
+
+        .movie-card {
+
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.15);
+
+            opacity: 0;
+
+            animation:
+                fadeIn 0.7s ease forwards;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        /* HOVER */
+
+        .movie-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* MOVIE IMAGE */
+
+        .movie-card img {
+
+            width: 100%;
+
+            height: 320px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* MOVIE INFORMATION */
+
+        .movie-info {
+
+            padding: 12px;
+        }
+
+
+        .movie-info h2 {
+
+            font-size: 17px;
+
+            color: #222;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* DETAILS */
+
+        .details {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #666;
+
+            font-size: 13px;
+
+            margin-bottom: 13px;
+        }
+
+
+        /* STAR */
+
+        .star {
+
+            color: #e74c3c;
+
+            font-size: 17px;
+        }
+
+
+        /* BOOK NOW */
+
+        .book-btn {
+
+            background: #777;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            padding: 10px 15px;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+
+            background: #555;
+
+            transform: scale(1.03);
+        }
+
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        .movie-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .movie-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .movie-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .movie-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .movie-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .movie-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 15px;
+
+                gap: 10px;
+            }
+
+            .location {
+                display: none;
+            }
+
+            nav {
+                gap: 5px;
+            }
+
+            nav a {
+                font-size: 12px;
+
+                padding: 9px 7px;
+            }
+
+            .booking {
+                padding: 11px 12px;
+
+                font-size: 11px;
+            }
+
+            .movie-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .logo {
+                font-size: 22px;
+
+                width: 90px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .movie-container {
+                grid-template-columns: 1fr;
+            }
+
+            .movie-card img {
+                height: 350px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         DISTRICT NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            district
+
+            <span>BY ZOMATO</span>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="location">
+
+            <b>📍 Gurugram</b>
+
+            <small>Haryana</small>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <nav>
+
+            <a href="#" class="active">
+                For you
+            </a>
+
+            <a href="#">
+                Dining
+            </a>
+
+            <a href="#">
+                Movies
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Comedy
+            </a>
+
+            <a href="#">
+                Sports
+            </a>
+
+            <a href="#">
+                Activities
+            </a>
+
+            <a href="#">
+                Play
+            </a>
+
+        </nav>
+
+
+        <!-- BOOKING -->
+
+        <button class="booking">
+
+            ✓ Booking Confirmed
+
+        </button>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         MOVIE CARDS
+    ========================= -->
+
+    <div class="movie-container">
+
+
+        <!-- CARD 1 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hanuman-ansh-et00507738-1787130927.jpg"
+                alt="Hanuman Ansh">
+
+            <div class="movie-info">
+
+                <h2>
+                    Hanuman
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        9.0 | U | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CARD 2 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://media5.bollywoodhungama.in/wp-content/uploads/2024/10/Mirzapur001-306x393.jpg"
+                alt="Mirzapur">
+
+            <div class="movie-info">
+
+                <h2>
+                    Mirzapur
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        8.5 | A | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CARD 3 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://stat5.bollywoodhungama.in/wp-content/uploads/2025/03/Awarapan-2-306x393.jpg"
+                alt="Awarapan 2">
+
+            <div class="movie-info">
+
+                <h2>
+                    Awarapan 2
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        8.0 | A | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CARD 4 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hanuman-ansh-et00507738-1787130927.jpg"
+                alt="Hanuman Ansh">
+
+            <div class="movie-info">
+
+                <h2>
+                    Hanuman
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        9.0 | U | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CARD 5 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hanuman-ansh-et00507738-1787130927.jpg"
+                alt="Hanuman Ansh">
+
+            <div class="movie-info">
+
+                <h2>
+                    Hanuman
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        9.0 | U | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CARD 6 -->
+
+        <div class="movie-card">
+
+            <img
+                src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hanuman-ansh-et00507738-1787130927.jpg"
+                alt="Hanuman Ansh">
+
+            <div class="movie-info">
+
+                <h2>
+                    Hanuman
+                </h2>
+
+                <div class="details">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <span>
+                        9.0 | U | Hindi
+                    </span>
+
+                </div>
+
+                <button class="book-btn">
+                    Book Now
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
