@@ -1,0 +1,164 @@
+1. Explain the difference between frontend, backend, and full-stack development with suitable real-world examples.
+ANS. (A)Frontend development focuses on the visual part of a website that users can see and interact with. It is developed using HTML, CSS, and JavaScript.
+        ex- Product images, search bar, buttons, and shopping cart interface.
+     (B)Backend development handles the server-side logic, database, authentication, and data processing. It is developed using technologies such as Node.js,
+        PHP, Python, Java, etc.
+        ex - User login, payment processing, order management, and database.
+     (C)A full-stack developer works on both the frontend and backend of a website or web application.
+        ex - Develops and manages both frontend and backend.
+2. Create a simple diagram showing how the client-server model works in web architecture.
+ANS. 
+             +----------------+
+             | Client Browser |
+             +----------------+
+                     |
+                HTTP Request
+                     |
+                     V
+             +----------------+
+             |   Web Server   |
+             +----------------+
+                     |
+              Database Request
+                     |
+                     V
+             +----------------+
+             |    Database    |
+             +----------------+
+                     |
+                  Data Return
+                     |
+                     V
+             +----------------+
+             |   Web Server   |
+             +----------------+
+                     |
+               HTTP Response
+                     |
+                     V
+             +----------------+
+             | Client Browser |
+             +----------------+
+
+3. Describe how a browser requests and displays a web page from a web server.
+ANS. 1. The user enters a website URL in the browser.
+     2. The browser sends an HTTP request to the web server.
+     3. The web server receives the request.
+     4. The server processes the request and fetches data from the database if required.
+     5. The server sends HTML, CSS, and JavaScript files to the browser.
+     6. The browser downloads these files.
+     7. The browser renders and displays the webpage to the user.
+
+4. Identify and list the tools required to set up a web development environment. Explain the purpose of each.
+ANS. 1. Visual Studio Code (VS Code)
+        Purpose: Writing and editing source code.
+
+     2. Google Chrome / Mozilla Firefox
+        Purpose: Running and testing websites.
+
+     3. Git
+        Purpose: Version control and source code management.
+
+     4. GitHub
+        Purpose: Online repository for storing and sharing code.
+
+     5. Node.js
+        Purpose: JavaScript runtime environment.
+
+     6. Live Server Extension
+        Purpose: Automatically refreshes the webpage during development.
+
+5. Explain what a web server is and give examples of commonly used servers.
+ANS. A web server is software that receives requests from web browsers and sends web pages or data back to users over the internet.
+
+     Examples of Web Servers:
+     • Apache HTTP Server
+     • Nginx
+     • Microsoft IIS
+     • LiteSpeed
+     • Node.js Server
+
+6. Define the roles of a frontend developer, backend developer, and database administrator in a project.
+ANS. (1) Frontend Developer:
+     • Designs the user interface.
+     • Creates responsive web pages.
+     • Uses HTML, CSS, and JavaScript.
+
+     (2) Backend Developer:
+     • Develops server-side logic.
+     • Connects databases.
+     • Creates APIs and handles user authentication.
+
+     (3) Database Administrator (DBA):
+     • Manages databases.
+     • Performs backup and recovery.
+     • Ensures data security and performance.
+
+8. Explain the difference between static and dynamic websites. Provide an example of each.
+ANS. Static Website:
+     • Content remains the same for every user.
+     • Built using HTML and CSS.
+     • Faster and easier to host.
+
+      Example:
+              Portfolio Website
+              Company Landing Page
+
+      Dynamic Website:
+      • Content changes according to the user or database.
+      • Uses backend technologies and databases.
+      • More interactive.
+
+       Example:
+               Amazon
+               Facebook
+               Instagram
+
+9. Research and list five web browsers. Explain how rendering engines differ between them.
+ANS. 1. Google Chrome – Blink
+     2. Microsoft Edge – Blink
+     3. Mozilla Firefox – Gecko
+     4. Apple Safari – WebKit
+     5. Opera – Blink
+
+    Rendering Engines:
+    Blink:
+    Fast rendering engine used by Chrome, Edge, and Opera.
+
+    Gecko:
+    Developed by Mozilla. Focuses on web standards and privacy.
+
+    WebKit:
+    Developed by Apple. Optimized for Safari and Apple devices.
+
+10. Draw a labeled diagram showing the basic web architecture flow — client, server, database, and APIs.
+ANS.     
+                 | Client Browser |
+                 
+                         |
+                    HTTP Request
+                         |
+                         V
+                 
+                 |   Web Server   |
+                
+                    |          |
+                    |          |
+                 API Calls   Database Query
+                    |          |
+                    V          V
+               
+              |   APIs   |  | Database  |
+              
+                    |          |
+                       Data
+                         |
+                         V
+                 
+                 | HTTP Response  |
+                 
+                         |
+                         V
+                
+                 | Client Browser |
+                 
